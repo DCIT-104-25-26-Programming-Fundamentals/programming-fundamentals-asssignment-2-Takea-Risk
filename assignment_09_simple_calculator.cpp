@@ -73,3 +73,100 @@
 #include <cmath>
 using namespace std;
 
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b) {
+    return a / b;
+}
+
+double modulus(double a, double b) {
+    return fmod(a, b);
+}
+
+double exponent(double a, double b) {
+    return pow(a, b);
+}
+
+void printMenu() {
+    cout << "============================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "============================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+}
+
+int main() {
+    int choice;
+    double first, second, result;
+
+    while (true) {
+        printMenu();
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            break;
+        } else if (choice >= 1 && choice <= 6) {
+            cout << "Enter first number : ";
+            cin >> first;
+            cout << "Enter second number: ";
+            cin >> second;
+
+            char symbol;
+            bool valid = true;
+
+            if (choice == 1) {
+                result = add(first, second);
+                symbol = '+';
+            } else if (choice == 2) {
+                result = subtract(first, second);
+                symbol = '-';
+            } else if (choice == 3) {
+                result = multiply(first, second);
+                symbol = '*';
+            } else if (choice == 4) {
+                if (second == 0) {
+                    cout << "Error: Cannot divide by zero." << endl;
+                    valid = false;
+                } else {
+                    result = divide(first, second);
+                    symbol = '/';
+                }
+            } else if (choice == 5) {
+                result = modulus(first, second);
+                symbol = '%';
+            } else if (choice == 6) {
+                result = exponent(first, second);
+                symbol = '^';
+            }
+
+            if (valid) {
+                cout << fixed << setprecision(2);
+                cout << "Result: " << first << " " << symbol << " " << second
+                     << " = " << result << endl;
+            }
+        } else {
+            cout << "Error: Please enter a number between 1 and 7." << endl;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
