@@ -1,0 +1,9 @@
+# Compiled executables
+*.exe
+*.out
+*.o
+*.obj
+
+# Build folders (if any compiler creates one)
+/build/
+/bin/
